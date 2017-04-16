@@ -40,7 +40,7 @@ easyDonations.config(function($routeProvider){
         })
         .when('/orphanageProfile',{
             templateUrl : 'views/orphanageProfile.html',
-			controller : 'donationController'
+			controller : 'claimsController'
         })
 }).filter('startFrom',function(){
         return function(data,start){

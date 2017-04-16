@@ -7,7 +7,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 	$scope.items = [];
     $scope.PageSize=5;
     $scope.currentPage=1;
-    
+    $scope.numOfClaims='';
 	if($sessionStorage.user){
 		// Only if Session is Set
 		$scope.posted_by = $sessionStorage.user.current_user;
@@ -28,7 +28,10 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
             $scope.donor=response.data;
       /*      console.log("Donor object");
             console.log(response);
-      */    },function(error){
+
+      */
+
+        },function(error){
             console.log("Couldnot get donor data");});
     };
     
@@ -59,6 +62,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
           //  console.log("POST OBJECT");
         //    console.log(response);
               processPosts();
+
         }, function (error) {
             console.log("Could not get data");
         });

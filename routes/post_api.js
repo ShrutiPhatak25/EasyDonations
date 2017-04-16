@@ -26,6 +26,7 @@ router.route('/posts')
                 if(err){
                     return res.send(500, err);
                 }
+            console.log(Posts);
                 return res.send(Posts);
             });    
         //return res.send({message:"gee all posts"});

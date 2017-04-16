@@ -146,14 +146,14 @@ $(".btn-pref .btn").click(function () {
         <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-            <p> <span class="glyphicon glyphicon-envelope"></span><b> Email : </b>{{current_user_name}}<br/><br/>
+            <p> <span class="glyphicon glyphicon-envelope"></span><b> Email : </b>{{current_user_name }}<br/><br/>
                 <span class="glyphicon glyphicon-phone"></span><b> Contact Details : </b>{{orphanage.contact_no}}<br/><br/>
                 <span class="glyphicon glyphicon-globe"></span> <b> Number Of Orphans : </b> {{orphanage.no_of_people}} 
             </p>
         </div>
         <div class="tab-pane fade in" id="tab2">
             <p> You have <b>NUMBER OF CLAIMS</b> claims!</p>
-            <button type="button"  href="#portfolioModal1" class="btn btn-info btn-sm center-block" data-toggle="modal"   ng-click="viewPosts()">View Claims</button>
+            <button type="button"  href="#portfolioModal1" class="btn btn-info btn-sm center-block" data-toggle="modal"   ng-click="viewClaims()">View Claims</button>
         </div>
        <!-- <div class="tab-pane fade in" id="tab3">
           <h3>This is tab 3</h3>
@@ -197,7 +197,7 @@ $(".btn-pref .btn").click(function () {
                 <div class="row">
                     <div class=" col-lg-12 col-lg-offset-2">
                         <div class="modal-body">
-                            <div class="panel panel-primary col-md-8"  ng-repeat="post in postsOfDonor | startFrom:(currentPage -1)*PageSize | limitTo:PageSize"  ng-show="showPosts">
+                            <div class="panel panel-primary col-md-4" style="margin-right:10px;"  ng-repeat="post in claims | startFrom:(currentPage -1)*PageSize | limitTo:PageSize"  ng-show="showPosts">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                   <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne{{$index}}" aria-expanded="true" aria-controls="collapseOne">
@@ -215,8 +215,7 @@ $(".btn-pref .btn").click(function () {
                                   </div>
                                     <div class="panel-footer">
                                         <div class="btn-group" role="group" aria-label="...">
-                                         <button type="button" class="btn btn-danger btn-sm" ng-click="deletePost(post._id,$index)"> Delete</button>
-<!--
+                                        <!--
                                          <button type="button" class="btn btn-info btn-sm" ng-click="updatePost()"> Update</button>
 -->
                                         </div>                                    
@@ -225,7 +224,7 @@ $(".btn-pref .btn").click(function () {
                             </div>
                         </div>
                     </div>
-                     <pagination total-items="postsOfDonor.length" ng-model="currentPage" items-per-page="PageSize"></pagination> 
+                     <pagination total-items="claims.length" ng-model="currentPage" items-per-page="PageSize"></pagination>
                 </div>
             <div class="modal-footer">
              <button type="button" class="btn btn-danger center-block " data-dismiss="modal">Close</button>

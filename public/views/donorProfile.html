@@ -198,8 +198,9 @@ $(".btn-pref .btn").click(function () {
                                 <div class="panel-heading" role="tab" id="headingOne">
                                   <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne{{$index}}" aria-expanded="true" aria-controls="collapseOne">
-                                      <strong> Posted On:</strong> {{post.creation_date | date: 'dd-MM-yyyy'}}
-                                        <strong>Expires On:</strong>{{post.expiry_date| date: 'dd-MM-yyyy'}}
+                                      <strong> Posted On:</strong> {{post.creation_date | date: 'dd-MM-yyyy'}}<br/>
+                                        <strong>Expires On:</strong>{{post.expiry_date| date: 'dd-MM-yyyy'}}<br/>
+                                        <strong>No. of Claims :</strong>{{post.claims.length}}
                                       </a>
                                   </h4>
                                 </div>
@@ -208,6 +209,10 @@ $(".btn-pref .btn").click(function () {
                                      
                                     <strong>Items:</strong>
                                     <div ng-repeat="item in post.items | startFrom:(currentPage -1)*PageSize | limitTo:PageSize "> {{item.item}} - {{item.quantity}}</div>
+                                      <strong>Claimed By :</strong>
+                                      <div ng-repeat=" claim in post.claims | startFrom:(currentPage -1)*PageSize | limitTo:PageSize ">
+                                        {{claim}}
+                                      </div>
                                      <pagination ng-show="post.items.length>5" total-items="post.items.length" ng-model="currentPage" items-per-page="PageSize"></pagination> 
                                   </div>
                                     <div class="panel-footer">
