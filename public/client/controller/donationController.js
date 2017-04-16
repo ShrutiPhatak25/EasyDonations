@@ -81,14 +81,11 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
     //"loaction":$scope.donors[j].address.city,
     
     function processPosts(){
-        console.log('inside process');
-         console.log($scope.posts);
 
        for(var i in $scope.posts){
            if($scope.posts[i].expiry_date!=null){
                var expDate=new Date($scope.posts[i].expiry_date);
-           console.log(expDate);
-           console.log($scope.today);
+
            if(expDate<=$scope.today){
                var p={"activated":false};
                donationFactory.updatePosts($scope.posts[i]._id,p).then(function(response){
