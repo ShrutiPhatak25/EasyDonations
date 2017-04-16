@@ -1,0 +1,53 @@
+<html>
+<head>
+    <script src="../js/crs.min.js"></script>
+<style>
+    .inputBox{
+     
+        webkit-border-radius: 5px;
+        moz-border-radius: 5px;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px black;
+    }
+</style>
+</head>
+<body>
+<!-- Modal content-->
+<div class="modal-content">
+	<!--<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" ng-click="$dismiss()">&times;</button>
+		<h4>Donor Sign Up form</h4>
+	</div>-->
+	<div class="modal-body clearfix">
+		<form ng-submit="registerDonor()">
+			<label><b>Name</b></label>
+			<input type="text" ng-model="donorSignupInfo.name" placeholder="Enter name"  class="inputBox" ng-required>
+
+			<label><b>Email</b></label>
+			<input type="email" ng-model="donorSignupInfo.username" placeholder="Enter email" name="email"  class="inputBox" ng-required>
+
+			<label><b>Contact NO</b></label>
+	<input type="text" ng-model="donorSignupInfo.contact" placeholder="Enter Contact Number"  name="pNo" minlength="10" maxlength="10" class="inputBox" ng-required>
+
+			<label><b>Password </b></label>
+			<input type="password" ng-model="donorSignupInfo.password" placeholder="Enter Password" name="password" class="inputBox"  ng-required>
+
+			<label><b>Confirm Password </b></label>
+			<input type="password" ng-model="donorSignupInfo.confirmPassword" placeholder="Re-enter Password" name="confirmPassword" class="inputBox pull-right" ng-required>
+			<span ng-hide="isSame(donorSignupInfo.password,donorSignupInfo.confirmPassword)">Passwords should match</span>
+              <label><b>Address :</b></label>
+        <label>Select Country  </label><select class="crs-country" data-region-id="state" style="width:50%">
+        </select><br/>
+        <label>Select State  </label> <select id="state"></select>
+         <div class="modal-footer">
+			<button  type="submit" class="btn btn-lg btn-success btn-rounded outline pull-left" ng-disabled="showButtonDonor" ng-click="$close()">
+				SignUp
+			</button>
+             <button type="button" id="close" data-dismiss="modal" class="btn btn-rounded pull-right" ng-click="$dismiss()">Close</button>
+    </div>        
+		</form>
+		
+	</div>
+</div>
+    </body>
+    </html>
