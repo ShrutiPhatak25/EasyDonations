@@ -27,7 +27,7 @@
             </div>
             <div class="row">
                 <div class="portfolio-item">
-                    <div class="col-md-4 col-sm-4" ng-repeat="i in postDetails | filter:locationItems" id="displayitem">
+                    <div class="col-md-4 col-sm-4" ng-repeat="i in postDetails | filter:locationItems" id="displayitem" ng-show="i.activated==true">
                         
                       <label> Donor Name : {{i.name}}</label>
                         <div ng-repeat="j in i.items"> {{j.item}} - {{j.quantity}}</div>

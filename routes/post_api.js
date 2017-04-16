@@ -66,12 +66,15 @@ router.route('/posts/:id')
             if(err){
                     res.send(500, err);
             }
-            
-            for (var i in req.body.items) {
-                var itemObj = { item: req.body.items[i].item, quantity:req.body.items[i].quantity };
-                post.items.push(itemObj);
+
+
+
+            if(req.body.hasOwnProperty('claims'))
+                post.claims.push(req.body.claims);
+            else if(req.body.hasOwnProperty('activated')){
+
+                post.activated=false;
             }
-            post.claims.push(req.body.claims);
             post.save(function(err, post){
                 if(err){
                     res.send(500, err);
@@ -95,7 +98,7 @@ router.route('/posts/:id')
     router.route('/posts/postedBy/:id')
     //get post by id
     .get(function(req, res){
-        Post.find({"posted_by":req.params.id}, function(err, post){
+        Post.find({"posted_by":req.params.id,"activated":true}, function(err, post){
             if(err){
                     res.send(500, err);
                 }

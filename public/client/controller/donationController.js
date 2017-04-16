@@ -58,6 +58,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
             $scope.posts = response.data;
           //  console.log("POST OBJECT");
         //    console.log(response);
+              processPosts();
         }, function (error) {
             console.log("Could not get data");
         });
@@ -70,7 +71,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         for(i in $scope.posts){
             for(j in $scope.donors){  
                 if($scope.posts[i].posted_by ==$scope.donors[j]._id){
-                    $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity,"postedBy":$scope.posts[i].posted_by,"postId":$scope.posts[i]._id,"claims":$scope.posts[i].claims});
+                    $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity,"activated":$scope.posts[i].activated,"postedBy":$scope.posts[i].posted_by,"postId":$scope.posts[i]._id,"claims":$scope.posts[i].claims});
                         
           //          console.log("postDetails");                        
                 }
@@ -79,6 +80,28 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
     };
     //"loaction":$scope.donors[j].address.city,
     
+    function processPosts(){
+        console.log('inside process');
+         console.log($scope.posts);
+
+       for(var i in $scope.posts){
+           if($scope.posts[i].expiry_date!=null){
+               var expDate=new Date($scope.posts[i].expiry_date);
+           console.log(expDate);
+           console.log($scope.today);
+           if(expDate<=$scope.today){
+               var p={"activated":false};
+               donationFactory.updatePosts($scope.posts[i]._id,p).then(function(response){
+
+              //  $scope.sendMail("shrutiphatak222@gmail.com","Mail Subject","Mail Body Message");
+            });
+           }
+           }
+
+       }
+    }
+
+
     getDonorById();
     getOrphanageById();
     getPostsOfDonor();
