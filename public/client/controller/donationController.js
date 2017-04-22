@@ -70,14 +70,16 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
    
     $scope.getAllDetails=function(){
     $scope.postDetails=[];
-//    console.log("Inside GetAll");
-        
+
+      console.log( $scope.posts);
+       // console.log($scope.donors);
         for(i in $scope.posts){
             for(j in $scope.donors){  
                 if($scope.posts[i].posted_by ==$scope.donors[j]._id){
                     $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity,"activated":$scope.posts[i].activated,"postedBy":$scope.posts[i].posted_by,"postId":$scope.posts[i]._id,"claims":$scope.posts[i].claims});
                         
-          //          console.log("postDetails");                        
+          //          console.log("postDetails");
+
                 }
             }
         }        

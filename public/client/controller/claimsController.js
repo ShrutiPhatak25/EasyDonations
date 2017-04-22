@@ -66,9 +66,9 @@ easyDonations.controller('claimsController',['$scope','$http','$sessionStorage',
         var temp= new Array();;
            temp=JSON.stringify($scope.posts[i].claims);
 
-           console.log(temp);
+
            if(temp.length>0){
-               console.log("insd ifs=")
+
                 if(temp.includes($scope.current_user_name)){
                 $scope.claims.push($scope.posts[i]);
 

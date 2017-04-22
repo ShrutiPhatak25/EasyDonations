@@ -26,7 +26,7 @@ router.route('/posts')
                 if(err){
                     return res.send(500, err);
                 }
-            console.log(Posts);
+
                 return res.send(Posts);
             });    
         //return res.send({message:"gee all posts"});
@@ -34,13 +34,12 @@ router.route('/posts')
     //create new post
     .post(function(req, res){
         var newPost = new Post();
-		console.log("Request Obj : ");
-		console.log(req.body);
+
         newPost.posted_by = req.body.posted_by;
         newPost.items = req.body.items;
         newPost.expiry_date = req.body.expiry_date;
         newPost.activated = true;
-        console.log(newPost);
+
         newPost.save(function(err, newPost){
             if(err){
                     return res.send(500, err);            

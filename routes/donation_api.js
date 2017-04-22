@@ -35,7 +35,7 @@ router.route('/donations')
         newDonation.donated_by = req.body.donated_by;
         newDonation.donated_to =req.body.donated_to;
         newDonation.donated_items = req.body.donated_items;
-      console.log("donated by"+newDonation.donated_by);
+
 
         newDonation.save(function(err, newDonation){
             if(err){
