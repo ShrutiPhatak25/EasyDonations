@@ -108,8 +108,9 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
     getDonorById();
     getOrphanageById();
     getPostsOfDonor();
-    getDonors();
     getPosts();
+    getDonors();
+
     $timeout($scope.getAllDetails, 1500);
 
     $scope.viewPosts=function(){	
