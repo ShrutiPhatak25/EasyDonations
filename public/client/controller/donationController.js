@@ -59,8 +59,8 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
     function getPosts() {
         donationFactory.getPosts().then(function (response){
             $scope.posts = response.data;
-          //  console.log("POST OBJECT");
-        //    console.log(response);
+            console.log("POST OBJECT");
+            console.log(response);
               processPosts();
 
         }, function (error) {
