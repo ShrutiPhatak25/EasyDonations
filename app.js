@@ -21,7 +21,7 @@ var mongoose = require('mongoose');
 
 //mongoose.connect('mongodb://localhost/easyDonations', function(err){
     // not getting printed on console
-mongoose.connect('mongodb://shruti:shruti123@ds155418.mlab.com:55418/easydonations', function(err){
+mongoose.connect('process.env.MONGOLAB_URI', function(err){
     if(err){
         console.log("Connection refused");
         throw err;
